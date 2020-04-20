@@ -17,13 +17,13 @@ const PersonForm = ({persons, setPersons, newName, setNewName, newNumber, setNew
             // console.log(returnedPerson)
             setPersons(persons.map(p => p !== person ? p : returnedPerson))
             
-            setMessage(`Changed the number of ${returnedPerson.name}`)
+            setMessage([`Changed the number of ${returnedPerson.name}`, false])
             setTimeout(() => {
-              setMessage(null)
+              setMessage([null, false])
             }, 5000)
           })
           .catch(error => {
-            setMessage('Information of ' + person.name + ' has already been removed from server')
+            setMessage(['Information of ' + person.name + ' has already been removed from server', true])
             setPersons(persons.filter(p => p.name !== newName))
           })
       }
@@ -40,10 +40,14 @@ const PersonForm = ({persons, setPersons, newName, setNewName, newNumber, setNew
       .then(returnedPerson => {
         setPersons(persons.concat(returnedPerson))
       })
+      .catch(error => {
+        console.log(error.response.data)
+        setMessage([error.response.data.error, true])
+      })
       // console.log(persons)
-      setMessage(`Added ${nameObject.name}`)
+      setMessage([`Added ${nameObject.name}`, false])
       setTimeout(() => {
-        setMessage(null)
+        setMessage([null, false])
       }, 5000)
     }
     setNewName('')

@@ -12,7 +12,7 @@ const App = () => {
   const [ searchTerm, setSearchTerm ] = useState('')
   const [ newName, setNewName ] = useState('')
   const [ newNumber, setNewNumber ] = useState('')
-  const [ message, setMessage ] = useState(null)
+  const [ message, setMessage ] = useState([null, false])
 
   useEffect(() => {
     /* axios

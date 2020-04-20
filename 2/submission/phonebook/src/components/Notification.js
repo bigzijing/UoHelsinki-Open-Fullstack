@@ -16,11 +16,11 @@ const Notification = ({ message }) => {
         color: 'red'
     }
 
-    if (message === null) {
+    if (message[0] === null) {
         return null
     }
 
-    if (message.includes("removed from server")) {
+    else if (message[1] === true) {
         return (
             <div style={errorStyle} className="message">
                 {message}
