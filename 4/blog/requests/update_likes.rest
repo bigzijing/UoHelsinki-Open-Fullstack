@@ -1,0 +1,6 @@
+GET http://localhost:4000/api/blogs/5ea00a2b6a5eec27c45e04c0
+Content-Type: application/json
+
+{
+  "likes": 1000
+}
